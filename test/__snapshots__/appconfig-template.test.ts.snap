@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppConfig Template Tests Snapshot validation 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "BasicApplication": Object {
+      "Properties": Object {
+        "Description": "My basic AppConfig application",
+        "Name": "basic-application",
+      },
+      "Type": "AWS::AppConfig::Application",
+    },
+    "ConfigurationProfile": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "Description": "My basic AppConfig configuration profile example",
+        "LocationUri": "hosted",
+        "Name": "basic-configuration-profile",
+      },
+      "Type": "AWS::AppConfig::ConfigurationProfile",
+    },
+    "DeploymentStrategy": Object {
+      "Properties": Object {
+        "DeploymentDurationInMinutes": 0,
+        "Description": "My basic AppConfig deployment strategy example",
+        "FinalBakeTimeInMinutes": 0,
+        "GrowthFactor": 100,
+        "GrowthType": "LINEAR",
+        "Name": "basic-deployment-strategy",
+        "ReplicateTo": "NONE",
+      },
+      "Type": "AWS::AppConfig::DeploymentStrategy",
+    },
+    "DevDeployment": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "ConfigurationVersion": Object {
+          "Ref": "DevHostedConfig",
+        },
+        "DeploymentStrategyId": Object {
+          "Ref": "DeploymentStrategy",
+        },
+        "EnvironmentId": Object {
+          "Ref": "devConfiguration",
+        },
+      },
+      "Type": "AWS::AppConfig::Deployment",
+    },
+    "DevHostedConfig": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "Content": "{\\"env\\":\\"dev\\"}",
+        "ContentType": "application/json",
+        "Description": "My basic AppConfig dev hosted configuration version example",
+      },
+      "Type": "AWS::AppConfig::HostedConfigurationVersion",
+    },
+    "HmgDeployment": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "ConfigurationVersion": Object {
+          "Ref": "HmgHostedConfig",
+        },
+        "DeploymentStrategyId": Object {
+          "Ref": "DeploymentStrategy",
+        },
+        "EnvironmentId": Object {
+          "Ref": "hmgConfiguration",
+        },
+      },
+      "Type": "AWS::AppConfig::Deployment",
+    },
+    "HmgHostedConfig": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "Content": "{\\"env\\":\\"hmg\\"}",
+        "ContentType": "application/json",
+        "Description": "My basic AppConfig hmg hosted configuration version example",
+      },
+      "Type": "AWS::AppConfig::HostedConfigurationVersion",
+    },
+    "PrdDeployment": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "ConfigurationVersion": Object {
+          "Ref": "PrdHostedConfig",
+        },
+        "DeploymentStrategyId": Object {
+          "Ref": "DeploymentStrategy",
+        },
+        "EnvironmentId": Object {
+          "Ref": "prdConfiguration",
+        },
+      },
+      "Type": "AWS::AppConfig::Deployment",
+    },
+    "PrdHostedConfig": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "ConfigurationProfileId": Object {
+          "Ref": "ConfigurationProfile",
+        },
+        "Content": "{\\"env\\":\\"prd\\"}",
+        "ContentType": "application/json",
+        "Description": "My basic AppConfig prd hosted configuration version example",
+      },
+      "Type": "AWS::AppConfig::HostedConfigurationVersion",
+    },
+    "devConfiguration": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "Name": "dev",
+      },
+      "Type": "AWS::AppConfig::Environment",
+    },
+    "hmgConfiguration": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "Name": "hmg",
+      },
+      "Type": "AWS::AppConfig::Environment",
+    },
+    "prdConfiguration": Object {
+      "Properties": Object {
+        "ApplicationId": Object {
+          "Ref": "BasicApplication",
+        },
+        "Name": "prd",
+      },
+      "Type": "AWS::AppConfig::Environment",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
