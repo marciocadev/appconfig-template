@@ -5,6 +5,7 @@ Este projeto é um exemplo de como criar um AppConfig na AWS utilizando o Cloud 
 ## Ferramentas
 * AWS-CLI
 * AWS-CDK
+  * npm i -g aws-cdk
 * CFN-DIAGRAM
   * npm i -g @mhlabs/cfn-diagram
 
@@ -17,3 +18,9 @@ Este projeto é um exemplo de como criar um AppConfig na AWS utilizando o Cloud 
 * `cdk deploy` faz o deploy da stack na AWS
 * `cdk diff` compara a stack local com a que foi feito o deploy
 * `cfn-dia html --template-file cdk.out/AppconfigTemplateStack.template.json` gera um diagrama e exibe no browser
+
+## Links úteis
+* Cloudformation Designer
+  * https://console.aws.amazon.com/cloudformation/designer/home?region=us-east-1
+* AWS Policy Generator
+  * https://awspolicygen.s3.amazonaws.com/policygen.html
