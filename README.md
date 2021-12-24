@@ -1,14 +1,28 @@
-# Welcome to your CDK TypeScript project!
+# AppConfig Template
 
-This is a blank project for TypeScript development with CDK.
+Este projeto é um exemplo de como criar um AppConfig na AWS utilizando o Cloud Development Kit (CDK)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+### Cria os arquivos para deploy (gera o javascript)
+```
+npm run build
+```
 
-## Useful commands
+### Altera os arquivos automaticamente (atualiza o javascript)
+```
+npm run watch
+```
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+### Executa os testes
+```
+npm run test
+```
+
+### Atualiza o snapshot para execução dos testes
+```
+npm run test -- --update-snapshot
+```
+
+### Deploy na AWS
+```
+cdk deploy
+```
