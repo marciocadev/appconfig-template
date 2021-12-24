@@ -18,6 +18,8 @@ Este projeto é um exemplo de como criar um AppConfig na AWS utilizando o Cloud 
 * `cdk deploy` faz o deploy da stack na AWS
 * `cdk diff` compara a stack local com a que foi feito o deploy
 * `cfn-dia html --template-file cdk.out/AppconfigTemplateStack.template.json` gera um diagrama e exibe no browser
+* `cfn-dia html --template-file cdk.out/AppconfigTemplateStack.template.json --output-path AppconfigTemplateStack-html` gera um diagrama e cria uma parta com o html
+* `cfn-dia draw.io --template-file cdk.out/AppconfigTemplateStack.template.json --output-file AppconfigTemplateStack.drawio` gera um diagrama e cria um arquivo para o Draw.io
 
 ## Links úteis
 * Cloudformation Designer
